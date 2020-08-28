@@ -52,6 +52,7 @@ Java语言既具有编译型语言的特征，也具有解释型语言的特征�
 3. 占内存大小：字符常量只占2个字节；字符串常量占若干个字节（**注意：char在Java中占两个字节**）
 
 > Java编程思想第四版：2.2.2节
+> 
 > ![](../../images/java/java基本类型.jpg)
 
 ### 1.2.2. 关于注释
@@ -79,4 +80,29 @@ Java中的注释有三种：
 > if (employee.isEligibleForFullBenefits())
 > ```
 
+### 1.2.3. 标识符和关键字的区别是什么
+在我们编写程序的时候，需要大量地为程序、类、变量、方法等取名字，于是就有了标识符，简单来说，标识符就是一个名字。但是有一些标识符，Java语言已经赋予了其特殊的含义，只能用于特定的地方，这种特殊的标识符就是关键字。
+
+### 1.2.4. Java中有哪些常见的关键字？
+| 访问控制             | private  | protected  | public   |              |            |           |        |
+| -------------------- | -------- | ---------- | -------- | ------------ | ---------- | --------- | ------ |
+| 类，方法和变量修饰符 | abstract | class      | extends  | final        | implements | interface | native |
+|                      | new      | static     | strictfp | synchronized | transient  | volatile  |        |
+| 程序控制             | break    | continue   | return   | do           | while      | if        | else   |
+|                      | for      | instanceof | switch   | case         | default    |           |        |
+| 错误处理             | try      | catch      | throw    | throws       | finally    |           |        |
+| 包相关               | import   | package    |          |              |            |           |        |
+| 基本类型             | boolean  | byte       | char     | double       | float      | int       | long   |
+|                      | short    | null       | true     | false        |            |           |        |
+| 变量引用             | super    | this       | void     |              |            |           |        |
+| 保留字               | goto     | const      |          |              |            |           |        |
+
+### 1.2.6. continue、break和return的区别是什么？
+在循环结构中，当循环条件不满足或者循环次数达到要求时，循环会正常结束。但是，有时候可能需要在循环的过程中，当满足了某种条件之后，提前终止循环，这就需要用到下面几个关键词：
+1. continue：指跳出当前的这一次循环，继续下一次循环。
+2. break：指跳出整个循环体，继续执行循环下面的语句。
+
+return用于跳出所在的方法，结束该方法的运行。return一般有两种用法：
+1. `return;`:直接使用return结束方法的执行，用于没有返回值函数的方法
+2. `return value;`:return一个特定值,用于有返回值函数的方法
 
