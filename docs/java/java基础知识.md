@@ -97,7 +97,7 @@ Java中的注释有三种：
 | 变量引用             | super    | this       | void     |              |            |           |        |
 | 保留字               | goto     | const      |          |              |            |           |        |
 
-### 1.2.6. continue、break和return的区别是什么？
+### 1.2.5. continue、break和return的区别是什么？
 在循环结构中，当循环条件不满足或者循环次数达到要求时，循环会正常结束。但是，有时候可能需要在循环的过程中，当满足了某种条件之后，提前终止循环，这就需要用到下面几个关键词：
 1. continue：指跳出当前的这一次循环，继续下一次循环。
 2. break：指跳出整个循环体，继续执行循环下面的语句。
@@ -105,4 +105,57 @@ Java中的注释有三种：
 return用于跳出所在的方法，结束该方法的运行。return一般有两种用法：
 1. `return;`:直接使用return结束方法的执行，用于没有返回值函数的方法
 2. `return value;`:return一个特定值,用于有返回值函数的方法
+
+### 1.2.7. Java泛型了解么？什么是类型擦除？介绍一下常用的通配符？
+Java泛型（generics）是JDK5中引入的一个新特性，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。
+
+**Java的泛型是伪泛型，这是因为Java在编译期间，所有的泛型信息都会被擦掉，这也就是通常所说类型擦除。更多关于类型擦除的问题，可以i查看这篇文章：[《Java泛型类型擦除以及类型擦除带来的问题》](https://www.cnblogs.com/wuqinglong/p/9456193.html)**
+
+```java
+List<Integer> list = new ArrayList<>();
+
+list.add(12);
+//这里直接添加会报错
+list.add("a");
+Class<? extends List> clazz = list.getClass();
+Method add = clazz.getDeclaredMethod("add", Object.class);
+//但是通过反射添加，是可以的
+add.invoke(list, "kl");
+
+System.out.println(list);
+
+```
+
+1. 泛型类：
+```java
+//此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型
+//在实例化泛型类时，必须指定T的具体类型
+public class Generic<T>{ 
+
+    private T key;
+
+    public Generic(T key) { 
+        this.key = key;
+    }
+
+    public T getKey(){ 
+        return key;
+    }
+}
+
+```
+
+如何实例化泛型类：
+```java
+Generic<Integer> genericInteger = new Generic<Integer>(123456);
+
+```
+
+2. 泛型接口：
+```java
+public interface Generator<T> {
+    public T method();
+}
+
+```
 
